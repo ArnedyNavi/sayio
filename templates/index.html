@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="/static/css/index.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    : Connect Now
+{% endblock %}
+
+{% block main %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6 right-side">
+                    <img src="/static/images/logo.png" height="75px" width:"75px">
+                    <div class="heading">
+                        <b>say.io</b>
+                    </div>
+                    <div class="subheading">
+                        <b>Connect with people now!</b>
+                    </div>
+
+                    <div class="button-signup"><a href="/signup" class="sign-up">Sign Up</a></div>
+                    <div class="button-login"><a href="/login" class="sign-in">Log In</a></div>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="/static/css/home.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    : Home
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-1 nav-bar">
+                <a href="/home"><div class="nav-icon-logo"><img src="/static/images/logo.png" width="40px" height="40px"></div></a>
+                <a href="/home"><div class="nav-icon"><img src='/static/images/home-active.png' onmouseover="this.src='/static/images/home-active.png';" onmouseout="this.src='/static/images/home-active.png';" width="33px" height="33px"></div></a>
+                <a href="/explore"><div class="nav-icon"><img src='/static/images/hashtag.png' onmouseover="this.src='/static/images/hashtag-h.png';" onmouseout="this.src='/static/images/hashtag.png'" width="40px" height="40px"></div></a>
+                <a href="/notification"><div class="nav-icon"><img src='/static/images/notification.png' onmouseover="this.src='/static/images/notification-h.png';" onmouseout="this.src='/static/images/notification.png'" width="33px" height="33px"></div></a>
+                <a href="/chat"><div class="nav-icon"><img src='/static/images/chat.png' onmouseover="this.src='/static/images/chat-h.png';" onmouseout="this.src='/static/images/chat.png'" width="33px" height="33px"></div></a>
+                <a href="/user/{{ user }}"><div class="nav-icon"><img src='/static/images/person.png' onmouseover="this.src='/static/images/person-h.png';" onmouseout="this.src='/static/images/person.png'" width="33px" height="33px"></div></a>
+
+                 <a href="/logout"><div class="nav-icon logout-icon"><img src='/static/images/logout.png' onmouseover="this.src='/static/images/logout-h.png';" onmouseout="this.src='/static/images/logout.png'" width="33px" height="33px"></div></a>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-8 main-container">
+                <div class="heading">Home</div>
+                <div class="row posting">
+                    <div class="col-1 pic">
+                        <img src= "{{ profile }}" height="55px" width="55px">
+                    </div>
+                    <div class="col-11">
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <div class="row">
+                                    <div class="col text-align-right close-btn-col">
+                                        <span class="closebtn">&times;</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <hr class="line">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1 pic">
+                                        <img src= "{{ profile }}" height="55px" width="55px">
+                                    </div>
+                                    <div class="col-11">
+                                        <form id="post-form" method="post" action="/post">
+                                            <textarea name="content" class="post-input" id="content" placeholder="What's on your mind?"></textarea>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <hr class="line">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-align-right">
+                                        <input class="submit-btn" type="submit" form="post-form">Say It!</input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-content" id="btn-post">Say Something</div>
+                    </div>
+                </div>
+                {% for post in posts %}
+                <hr class="line">
+                <div class="row post">
+                    <div class="col-1 pic">
+                        <img src="{{ post['profile_path'] }}">
+                    </div>
+                    <div class="col-11">
+                        <div class="col post-user">
+                        <div class="row">
+                            <div class="col">
+                                <div class="author_desc">
+                                    <div class="author"><a href="/user/{{ post['username'] }}">{{ post["owner"]}}</a> </div>
+                                    <div class="username"> @{{ post["username"] }} <b>&middot;</b> {{post["time"]}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="content">{{ post["content"] }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 icon-post">
+                                {% if not(post["is_like"]) %}
+                                    <i class="fa fa-thumbs-up fa-outline like-btn" name="like-btn-{{post["id"]}}" id="{{post["id"]}}" onclick="like"></i> &nbsp {{ post["like"] }}
+                                {% else %}
+                                    <i class="fa fa-thumbs-up fa-fill-2 dislike-btn" name="dislike-btn-{{post["id"]}}" id="{{post["id"]}}" onclick="like"></i> &nbsp {{ post["like"] }}
+                                {% endif %}
+                            </div>
+                            <div class="col-4 icon-post">
+                                <i class="fa fa-retweet fa-fill"></i>  &nbsp{{ post["retweet"] }}
+                            </div>
+                            <div class="col-4 icon-post">
+                                <i class="fa fa-comments fa-outline"></i> &nbsp{{ post["comment"] }}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col side">
+                <div class="heading">Contacts</div>
+                <div class="box-search">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="col">
+                            <form method="post" action="/search">
+                                <input type="text" name="query" class="search" placeholder="Search on say.io">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% for contact in contacts %}
+                <div class="row">
+                    <div class="col-1 pic-profile">
+                        <img class="pic" src="{{ contact['profile_path']}}" height="55px" width="55px">
+                    </div>
+                    <div class="col-4">
+                        <b><div class="content contact"><a href="/user/{{contact['username']}}">{{ contact["name"]}}</a></div></b>
+                        <dic class="username">@{{contact["username"]}}</dic>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/home.js"></script>
+{% endblock %}

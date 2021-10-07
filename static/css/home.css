@@ -1,0 +1,502 @@
+body{
+    background: #1c2322;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: normal;
+}
+
+.copy {
+    color: #d5d7d7;
+}
+
+.heading {
+    color: white;
+    font-family: Qanelas;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.nav-bar {
+    padding-top: 20px;
+    position: fixed;
+    border-right: 1px solid black;
+    border-color: #5a5f5f;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.nav-icon {
+    margin-bottom:0px;
+    width: 50px;
+    height: 50px;
+    text-align: right;
+    padding-top: 6px;
+}
+
+.nav-icon-logo {
+    margin-bottom:30px;
+    width: 50px;
+    height: 50px;
+    padding-top: 6px;
+}
+
+.nav-icon img{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.nav-icon:hover{
+    box-shadow: inset 0 0 0 50px rgba(50,56,56,0.8);
+	transition: all 0.2s ease-in-out;
+	border-radius: 50px;
+	opacity: 1;
+}
+
+.logout-icon {
+    position: fixed;
+    bottom: 20px;
+}
+
+.main-container {
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.side {
+    position: fixed;
+    padding: 20px;
+    left: 72%;
+    border-left: 1px solid black;
+    border-color: #5a5f5f;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.text-content {
+    width: 100%;
+    height: 55px;
+    background-color: #323838;
+    border-radius: 30px;
+    border: none;
+    padding: 15px;
+    color: #767b7a;
+    cursor: pointer;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(255,255,255,0.2); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #1e2121;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid #5a5f5f;
+  width: 50%;
+  border-radius: 25px;
+}
+
+.close-btn-col {
+    padding-bottom: 0px;
+}
+/* The Close Button */
+.closebtn {
+  color: #2dc5ff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closebtn:hover,
+.closebtn:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.posting {
+    margin-bottom: 20px;
+}
+
+.line {
+    background-color: #5a5f5f;
+}
+
+.author-desc {
+    font-family: Gilroy-Bold;
+    font-size: 15px;
+    color: white;
+}
+
+.author {
+    font-family: Gilroy-Bold;
+    font-size: 15px;
+    color: white;
+    float: left;
+    margin-right: 8px;
+}
+
+.author a{
+    color: white;
+    text-decoration: none;
+}
+.username {
+    font-family: Gilroy-Light;
+    font-size: 15px;
+    color: #6f7373;
+}
+.content {
+    font-family: Open Sans;
+    font-size: 15px;
+    color: white;
+}
+
+.pic img{
+    border-radius: 100%;
+    width: 170%;
+    height: auto;
+    margin: -5%;
+}
+
+.post {
+    margin-top: 25px;
+}
+
+.post-input {
+    margin-left: 20px;
+    height: 150px;
+    width: 95%;
+    background: #1e2121;
+    color: white;
+    border: none;
+    font-family: Open Sans;
+    font-size: 20px;
+}
+
+.post-input:hover{
+    outline: 0;
+}
+
+.post-input:focus {
+    outline: 0;
+}
+
+.submit-btn {
+    background-color: #2dc5ff;
+    border-radius: 40px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    padding-top: 6px;
+    color: white;
+    font-family: Gilroy-Bold;
+    font-size: 16px;
+    float: right;
+    border: 0;
+    outline: 0;
+}
+
+.submit-btn:hover {
+    outline:0;
+}
+
+.box-search {
+    width: 25%;
+    height: 50px;
+    background-color: #323838;
+    border-radius: 40px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.fa-search {
+    color: white;
+}
+
+.search {
+    background-color: #323838;
+    border: none;
+    color: white;
+    font-family: Open Sans;
+    width: auto;
+}
+
+.search:hover, .search:focus {
+    outline: none;
+}
+
+.pic-profile{
+    padding: -5px;
+    margin-right: -3%;
+    margin-bottom: 15px;
+}
+
+.pic-profile img{
+     border-radius: 100px;
+}
+
+.contact {
+    font-size: 16px;
+}
+
+.fa-arrow-left {
+    color: white;
+}
+
+.back {
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: auto;
+    margin-right: -3%;
+}
+
+.box-search-2 {
+    width: 100%;
+    height: 50px;
+    background-color: #323838;
+    border-radius: 40px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.result-box {
+    width: 100%;
+    padding-left: 6px;
+}
+
+.name {
+    color: white;
+    font-family: Open Sans;
+    font-weight: Bold;
+}
+
+.profile-search {
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.follow-button {
+    width: 120px;
+    height: 35px;
+    border-radius: 30px;
+    border: 1px solid #2dc5ff;
+    color: #2dc5ff;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.link-name:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.line-box {
+    width: 100%;
+    padding-left: 6px;
+}
+
+.frame img{
+    width:100%;
+    height: auto;
+    z-index: -1;
+    position: relative;
+}
+
+.profile {
+    margin-bottom: 20%;
+}
+
+.profile img{
+    width: 60%;
+    height: auto;
+    border-radius: 100%;
+    position: absolute;
+    top: -10vh;
+    margin-left: 20px;
+    border: 7px solid #1c2322 ;
+}
+
+.profile-box {
+    width: 103%;
+    margin-left: -1%;
+    margin-bottom: 50px;
+}
+
+.following-user {
+    background-color: #2dc5ff;
+    width: 120px;
+    height: 30px;
+    border-radius: 100%;
+    color: white;
+    padding-top: 10px;
+    font-family: open sans;
+    text-align: center;
+    font-weight: bold;
+}
+
+.following-user {
+    background-color: #2dc5ff;
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+    color: white;
+    padding-top: 3px;
+    font-family: open sans;
+    text-align: center;
+    font-weight: bold;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.following-user .unfollow-text {
+    display: none;
+}
+
+.following-user:hover {
+    background-color: #ff2d5c;
+}
+
+.following-user:hover .unfollow-text {
+    display: inline;
+}
+
+.following-user:hover .unfollow-text input{
+    background-color: #ff2d5c;
+    outline: 0;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-family: open sans;
+}
+
+
+.following-user:hover .unfollow-text input:hover{
+    outline: 0;
+}
+
+.following-user:hover .following-text {
+    display: none;
+}
+
+.unfollowing-user {
+    border: 1px solid #2dc5ff;
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+    color: #2dc5ff;
+    padding-top: 2px;
+    font-family: open sans;
+    text-align: center;
+    font-weight: bold;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.unfollowing-user:hover {
+    background-color: #092733;
+}
+
+.unfollowing-user .follow-text input{
+    padding: 0px;
+    background-color: #1c2322;
+    outline: 0;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-family: open sans;
+}
+.unfollowing-user:hover .follow-text input{
+    background-color: #092733;
+    outline: 0;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-family: open sans;
+}
+
+.unfollowing-user:hover .follow-text input:hover{
+    outline: 0;
+}
+
+.info-user {
+    margin-left: -10%;
+}
+
+.info-text {
+    color: #abb0af;
+    font-family: Open Sans;
+    padding-top: 15px;
+}
+
+.action-col {
+
+    float: right;
+}
+
+.contact a{
+    color: white;
+}
+
+.contact a:hover {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.fa-outline {
+   color: transparent;
+   -webkit-text-stroke-width: 2px;
+   -webkit-text-stroke-color: #abb0af;
+}
+
+.icon-post {
+    padding-top: 5px;
+    color: #abb0af;
+}
+
+.fa-fill {
+    color: #abb0af;
+}
+
+.fa-fill-2 {
+    color: #2dc5ff;
+}

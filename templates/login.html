@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="/static/css/login.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    : Log In
+{% endblock %}
+
+{% block main %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <img src="/static/images/logo.png" height="50px" width="50px"></img>
+                    <div class="heading">Login to say.io</div>
+                    {% with alert = get_flashed_messages(category_filter=["alert"]) %}
+                    {% if alert %}
+                        <div class="subheading sub-alert" role="alert">
+                              {{ get_flashed_messages() | join(" ") }}
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                    <form class="sign-in" action="/login" method="post">
+                        <div class="box">
+                            <label for="username" class="label-signin">Username</label></br>
+                            <input type="text" class="form-sign-in" name="username" required>
+                        </div>
+                        <div class="box">
+                            <label for="password" class="label-signin">Password</label></br>
+                            <input type="password" class="form-sign-in" name="password" required>
+                        </div>
+                        <input class="btn-submit" type="submit" value="Log In">
+                    </form>
+
+                    <div class="subheading"> Haven't signed up yet? <a href="/signup">Sign Up Now!</a></div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

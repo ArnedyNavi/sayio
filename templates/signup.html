@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="/static/css/signup.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    : Sign Up
+{% endblock %}
+
+{% block main %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <img src="/static/images/logo.png" height="50px" width="50px"></img>
+                    <div class="heading">Create Your say.io Account</div>
+                    {% with alert = get_flashed_messages(category_filter=["alert"]) %}
+                    {% if alert %}
+                        <div class="sub-alert" role="alert">
+                              {{ get_flashed_messages() | join(" ") }}
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                    <div class="form-box">
+                        <form class="sign-up" action="/signup" method="post">
+                            <div class="box">
+                                <label for="name" class="label-signup">Name</label></br>
+                                <input type="text" class="form-sign-up" value="{{ name }}" name="name" required>
+                            </div>
+                            <hr class="line">
+                            <div class="box">
+                                <label for="username" class="label-signup">Username</label></br>
+                                <input type="text" class="form-sign-up" value="{{ username }}" name="username" required>
+                            </div>
+                            <div class="box">
+                                <label for="email" class="label-signup">Email</label></br>
+                                <input type="email" class="form-sign-up" value="{{ email }}" name="email" required>
+                            </div>
+                            <div class="box">
+                                <label for="password" class="label-signup">Password</label></br>
+                                <input type="password" class="form-sign-up" name="password" required>
+                            </div>
+
+                            <div class="subheading">
+                                Date of Birth
+                            </div>
+
+                            <div class="box">
+                                <label for="date" class="label-signup">Date</label></br>
+                                <input type="date" class="form-sign-up"value="{{ date }}" name="date" required>
+                            </div>
+                            <div class="subheading-2">
+                                By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy </a>,
+                                including Cookie Use
+                            </div>
+                            <input class="btn-submit" type="submit" value="Sign Up">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

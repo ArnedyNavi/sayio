@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="/static/css/home.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    : {{ user["name"] }}
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-1 nav-bar">
+                <a href="/home"><div class="nav-icon-logo"><img src="/static/images/logo.png" width="40px" height="40px"></div></a>
+                <a href="/home"><div class="nav-icon"><img src='/static/images/home.png' onmouseover="this.src='/static/images/home-h.png';" onmouseout="this.src='/static/images/home.png';" width="33px" height="33px"></div></a>
+                <a href="/explore"><div class="nav-icon"><img src='/static/images/hashtag.png' onmouseover="this.src='/static/images/hashtag-h.png';" onmouseout="this.src='/static/images/hashtag.png'" width="40px" height="40px"></div></a>
+                <a href="/notification"><div class="nav-icon"><img src='/static/images/notification.png' onmouseover="this.src='/static/images/notification-h.png';" onmouseout="this.src='/static/images/notification.png'" width="33px" height="33px"></div></a>
+                <a href="/chat"><div class="nav-icon"><img src='/static/images/chat.png' onmouseover="this.src='/static/images/chat-h.png';" onmouseout="this.src='/static/images/chat.png'" width="33px" height="33px"></div></a>
+                <a href="/user/{{ user_now }}"><div class="nav-icon"><img src='/static/images/person.png' onmouseover="this.src='/static/images/person-h.png';" onmouseout="this.src='/static/images/person.png'" width="33px" height="33px"></div></a>
+
+                 <a href="/logout"><div class="nav-icon logout-icon"><img src='/static/images/logout.png' onmouseover="this.src='/static/images/logout-h.png';" onmouseout="this.src='/static/images/logout.png'" width="33px" height="33px"></div></a>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-8 main-container">
+                <div class="row">
+                    <div class="col-1 align-self-center back">
+                         <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col align-self-center">
+                        <div class="name big-text">{{ user["name"] }} </div>
+                        <div class="username">{{ total }} posts</div>
+                    </div>
+                </div>
+                <div class="profile-box">
+                    <hr class="line">
+                    <div class="row">
+                        <div class="col">
+                            <div class="frame">
+                                <img src="/static/images/user/user2@gmail.com/frame.jpg">
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="profile">
+                                        <img src="/{{ profile }}">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-8 info-user info-text align-self-center">
+                                            <b>{{ following }}</b> Following  &middot;  <b>{{ followers }}</b> Followers
+                                        </div>
+                                        <div class="col-5 action-col align-self-center">
+
+                                            {% if not(is_user) %}
+                                            <div class="action">
+                                                {% if is_following %}
+                                                    <div id="following" name="{{ user['username'] }}" class="following-user">
+                                                        <span class="following-text">Following</span>
+                                                        <span id="unfollow-text" class="unfollow-text">Unfollow</span>
+                                                    </div>
+                                                {% else %}
+                                                    <div id="unfollowing" name="{{ user['username'] }}" class="unfollowing-user">
+                                                        <span class="follow-text">Follow</span>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="line">
+                {% for post in posts %}
+                <div class="row posts-user">
+                    <div class="col-1 pic">
+                        <img src="/{{ profile }}">
+                    </div>
+                    <div class="col post-user">
+                        <div class="row">
+                            <div class="col">
+                                <div class="author_desc">
+                                    <div class="author"><a href="/user/{{ post['username'] }}">{{ post["owner"]}}</a> </div>
+                                    <div class="username"> @{{ post["username"] }} <b>&middot;</b> {{post["time"]}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="content">{{ post["content"] }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 icon-post">
+                                <form>
+
+                                </form>
+                                <i class="fa fa-thumbs-up fa-outline"></i> {{ post["like"] }}
+                            </div>
+                            <div class="col-4 icon-post">
+                                <i class="fa fa-retweet fa-fill"></i> {{ post["retweet"] }}
+                            </div>
+                            <div class="col-4 icon-post">
+                                <i class="fa fa-comments fa-outline"></i> {{ post["comment"] }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="line">
+                {% endfor %}
+            </div>
+
+            <div class="col side">
+                <div class="heading">Trends</div>
+                <div class="box-search">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="col">
+                            <form method="post" action="/search">
+                                <input type="text" name="query" class="search" placeholder="Search on say.io">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% for contact in contacts %}
+                <div class="row">
+                    <div class="col-1 pic-profile">
+                        <img class="pic" src="{{ contact['profile_path']}}" height="55px" width="55px">
+                    </div>
+                    <div class="col-4">
+                        <b><div class="content contact"><a href="/user/{{contact['username']}}">{{ contact["name"]}}</a></div></b>
+                        <dic class="username">@{{contact["username"]}}</dic>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/home.js"></script>
+{% endblock %}
